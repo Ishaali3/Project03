@@ -34,7 +34,8 @@ function renderQuestion() {
             questionText: question.question,
             answers: question.answers,
             currentQuestionIndex: currentQuestionIndex + 1,
-            totalQuestions: quizData.length
+            totalQuestions: quizData.length,
+            score: score
         };
         document.getElementById("quizApp").innerHTML = template(context);
         setupAnswerEvents(question);
@@ -44,16 +45,12 @@ function renderQuestion() {
 }
 
 function setupAnswerEvents(question) {
-    const answersContainer = document.getElementById("answers");
-    answersContainer.innerHTML = "";
-    question.answers.forEach((answer, index) => {
-        const answerButton = document.createElement("button");
-        answerButton.classList.add("btn", "btn-secondary", "m-2");
-        answerButton.textContent = answer;
-        answerButton.addEventListener("click", function() {
-            evaluateAnswer(answer, question.correctAnswer);
+    const answerButtons = document.querySelectorAll(".answer-button");
+    answerButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const selectedAnswer = button.dataset.answer;
+            evaluateAnswer(selectedAnswer, question.correctAnswer);
         });
-        answersContainer.appendChild(answerButton);
     });
 }
 
