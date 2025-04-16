@@ -24,13 +24,20 @@
         <!-- Handlebars template for the quiz -->
         <script id="quizTemplate" type="text/x-handlebars-template">
             <div id="quizContent">
-                <div id="question"></div>
-                <div id="answers"></div>
+                <h2>{{questionText}}</h2>
+                <div id="answers">
+                    {{#each answers}}
+                        <button class="btn btn-secondary answer-button" data-answer="{{this}}">{{this}}</button>
+                    {{/each}}
+                </div>
                 <div id="feedback" class="d-none"></div>
-                <div id="scoreboard"></div>
+                <div id="scoreboard">
+                    <p>Question: {{currentQuestionIndex}} / {{totalQuestions}}</p>
+                    <p>Score: {{score}} / {{totalQuestions}}</p>
+                </div>
             </div>
         </script>
-
+        
         <script src="assets/js/handlebars.min.js"></script>
         <script src="assets/js/app.js"></script>
     </div>
