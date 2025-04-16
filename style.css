@@ -1,44 +1,23 @@
 body {
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-#app {
-  margin-top: 20px;
+#quizApp {
+    text-align: center;
+    padding: 20px;
 }
 
-.question {
-  margin-bottom: 20px;
+#answers button {
+    width: 100%;
 }
 
-button.option-btn {
-  margin-top: 10px;
+#feedback {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: green;
 }
 
-.feedback-message {
-  background-color: #28a745;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.feedback-wrong {
-  background-color: #dc3545;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.scoreboard {
-  margin-top: 20px;
-}
-
-.timer {
-  margin-top: 10px;
-}
-
-.result-message {
-  font-size: 1.5em;
-  text-align: center;
+button {
+    margin-top: 10px;
 }
