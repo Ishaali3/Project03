@@ -7,15 +7,28 @@ let startTime;
 
 document.getElementById("startQuizForm").addEventListener("submit", function(event) {
     event.preventDefault();
+    
+    // Get student name and selected quiz
     studentName = document.getElementById("studentName").value;
     const selectedQuiz = document.getElementById("quizSelect").value;
+
+    console.log("Form submitted!");
+    console.log("Student Name: " + studentName);
+    console.log("Selected Quiz: " + selectedQuiz);
+
+    // Load quiz data based on the selected quiz
     loadQuizData(selectedQuiz);
 });
 
 async function loadQuizData(quizType) {
+    console.log("Loading quiz data...");
     try {
         const response = await fetch(quizDataUrl);
         quizData = await response.json();
+
+        console.log("Quiz Data Loaded:");
+        console.log(quizData);
+
         currentQuestionIndex = 0;
         score = 0;
         startTime = Date.now();
@@ -26,6 +39,7 @@ async function loadQuizData(quizType) {
 }
 
 function renderQuestion() {
+    console.log("Rendering question...");
     if (currentQuestionIndex < quizData.length) {
         const question = quizData[currentQuestionIndex];
         const source = document.getElementById("quizTemplate").innerHTML;
@@ -45,6 +59,7 @@ function renderQuestion() {
 }
 
 function setupAnswerEvents(question) {
+    console.log("Setting up answer events...");
     const answerButtons = document.querySelectorAll(".answer-button");
     answerButtons.forEach(button => {
         button.addEventListener("click", function() {
@@ -55,6 +70,7 @@ function setupAnswerEvents(question) {
 }
 
 function evaluateAnswer(selectedAnswer, correctAnswer) {
+    console.log("Evaluating answer...");
     const feedbackDiv = document.getElementById("feedback");
     if (selectedAnswer === correctAnswer) {
         score++;
@@ -81,6 +97,7 @@ function evaluateAnswer(selectedAnswer, correctAnswer) {
 }
 
 function finishQuiz() {
+    console.log("Finishing quiz...");
     const timeTaken = (Date.now() - startTime) / 1000;
     const percentage = (score / quizData.length) * 100;
     let resultMessage = "";
@@ -100,6 +117,7 @@ function finishQuiz() {
 }
 
 function startNewQuiz() {
+    console.log("Starting a new quiz...");
     document.getElementById("quizApp").innerHTML = `
         <h1>Welcome to the Online Quiz</h1>
         <form id="startQuizForm">
