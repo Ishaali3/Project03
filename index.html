@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz App</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Application</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    <div id="quizApp">
+        <div id="welcomeView">
+            <h1>Welcome to the Online Quiz</h1>
+            <form id="startQuizForm">
+                <input type="text" id="studentName" placeholder="Enter your name" class="form-control" required>
+                <select id="quizSelect" class="form-control" required>
+                    <option value="quiz1">Quiz 1: JavaScript Basics</option>
+                    <option value="quiz2">Quiz 2: Python Basics</option>
+                </select>
+                <button type="submit" class="btn btn-primary mt-3">Start Quiz</button>
+            </form>
+        </div>
 
-  <div id="app"></div>
+        <!-- Handlebars template for the quiz -->
+        <script id="quizTemplate" type="text/x-handlebars-template">
+            <div id="quizContent">
+                <div id="question"></div>
+                <div id="answers"></div>
+                <div id="feedback" class="d-none"></div>
+                <div id="scoreboard"></div>
+            </div>
+        </script>
 
-  <!-- Handlebars Template -->
-  <script id="main-template" type="text/x-handlebars-template">
-    {{> main}}
-  </script>
-
-  <script id="quiz-template" type="text/x-handlebars-template">
-    {{> quiz}}
-  </script>
-
-  <script id="feedback-template" type="text/x-handlebars-template">
-    {{> feedback}}
-  </script>
-
-  <script id="results-template" type="text/x-handlebars-template">
-    {{> results}}
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-  <script src="script.js"></script>
+        <script src="assets/js/handlebars.min.js"></script>
+        <script src="assets/js/app.js"></script>
+    </div>
 </body>
 </html>
